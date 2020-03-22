@@ -8,11 +8,6 @@ source ./.env
 # Ensure the app's dependencies are installed
 mix deps.get
 
-# Install JS libraries
-echo "Installing JS..."
-cd apps/plutus_web/assets && npm install
-cd ../../..
-
 # Wait for Postgres to become available.
 until psql "postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@database/$POSTGRES_DATABASE" '\q' 2>/dev/null; do
   >&2 echo "Postgres is unavailable - retrying in 1 second"
