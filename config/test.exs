@@ -16,3 +16,6 @@ config :plutus, PlutusWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :comeonin, :bcrypt_log_rounds, 4
+config :comeonin, :pbkdf2_rounds, 1
