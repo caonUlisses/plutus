@@ -36,3 +36,10 @@ npm-debug.log
 .env
 .elixir_ls
 .formatter.exs
+/.idea/libraries/
+/.idea/emacs.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/plutus.iml
+/.idea/vcs.xml
+/.idea/
