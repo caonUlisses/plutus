@@ -1,0 +1,67 @@
+version: "3.5"
+
+services:
+  database:
+    container_name: db
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - web
+    env_file:
+      - .env
+
+  elixir:
+    build: ./docker/
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    ports:
+      - "4000:4000"
+      - "4001:4001"
+    networks:
+      - web
+    command:
+      - ./start.sh
+
+  portainer:
+    image: portainer/portainer
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    ports:
+      - 9000:9000
+      - 8000:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  netdata:
+    image: netdata/netdata
+    hostname: example.com # set to fqdn of host
+    ports:
+      - 20000:19999
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+
+networks:
+  web:
+    driver: bridge
+
+volumes:
+  postgres:
+  portainer_data:
