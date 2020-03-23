@@ -21,6 +21,6 @@ jobs:
     - name: Install Dependencies
       run: mix deps.get
     - name: Run Tests
-      run: POSTGRES_HOST={{ POSTGRES_HOST }} && POSTGRES_DATABASE={{ POSTGRES_DATABASE }} && POSTGRES_USER={{ POSTGRES_USER }} && POSTGRES_PASSWORD={{ POSTGRES_PASSWORD }} && mix test
+      run: POSTGRES_HOST=${{secrets.POSTGRES_HOST}} && POSTGRES_DATABASE=${{secrets.POSTGRES_DATABASE}} && POSTGRES_USER=${{secrets.POSTGRES_USER}} && POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}} && mix test
     - name: Credo
       run: mix credo --strict lib/
