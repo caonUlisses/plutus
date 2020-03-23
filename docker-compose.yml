@@ -57,6 +57,21 @@ services:
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
+  metabase:
+    container_name: metabase
+    image: metabase/metabase
+    environment:
+      MB_DB_TYPE: "postgres"
+      MB_DB_NAME: "metabase"
+      MB_DB_PORT: "5432"
+      MB_DB_USER: ${POSTGRES_USER}
+      MB_DB_PASS: ${POSTGRES_PASSWORD}
+      MB_DB_HOST: "database"
+    networks:
+      - web
+    ports:
+      - "3000:3000"
+
 
 networks:
   web:
