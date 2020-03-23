@@ -1,0 +1,15 @@
+{
+  "skip_files": [
+    "lib/guardian.ex",
+    "lib/plutus.ex",
+    "lib/plutus/application.ex",
+    "lib/plutus_web.ex",
+    "lib/plutus/repo.ex",
+    "lib/plutus_web/endpoint.ex",
+    "lib/plutus_web/gettext.ex",
+    "test/support",
+    "test/test_helper.exs",
+    "lib/plutus_web/views/error_helpers.ex",
+    "lib/plutus_web/auth_pipeline.ex"
+  ]
+}

@@ -10,7 +10,17 @@ defmodule Plutus.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [
+        tool: ExCoveralls
+      ],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
+
     ]
   end
 
@@ -45,6 +55,8 @@ defmodule Plutus.MixProject do
       {:bcrypt_elixir, "~> 2.0"},
       {:comeonin, "~> 5.3"},
       {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:guardian, "~> 2.0"},
+      {:excoveralls, "~> 0.10", only: :test},
     ]
   end
 
