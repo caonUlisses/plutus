@@ -1,6 +1,6 @@
 FROM elixir:alpine
 
-RUN apk add --update alpine-sdk postgresql-client inotify-tools nodejs npm
+RUN apk add --update alpine-sdk postgresql-client inotify-tools nodejs npm gcc
 
 RUN mix local.hex --force
 RUN mix local.rebar --force
