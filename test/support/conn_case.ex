@@ -17,6 +17,11 @@ defmodule PlutusWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Plutus.Accounts
+  alias Plutus.Guardian
+
+  @valid_attrs %{email: "test@test.com", password: "c3pOd0d0", password_confirmation: "c3pOd0d0"}
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -35,6 +40,17 @@ defmodule PlutusWeb.ConnCase do
       Ecto.Adapters.SQL.Sandbox.mode(Plutus.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {conn} = if tags[:authenticated] do
+      {:ok, user} = Accounts.create_user(@valid_attrs)
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+        conn = Phoenix.ConnTest.build_conn()
+               |> Plug.Conn.put_req_header("accept", "application/json")
+               |> Plug.Conn.put_req_header("authorization", "Bearer #{token}")
+      {conn}
+    else
+      {Phoenix.ConnTest.build_conn()}
+    end
+
+    {:ok, conn: conn}
   end
 end
