@@ -3,7 +3,10 @@
 # https://medium.com/@hex337/running-a-phoenix-1-3-project-with-docker-compose-d82ab55e43cf
 set -e
 # shellcheck disable=SC2039
-source ./.env
+export POSTGRES_DATABASE=plutus
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=postgres
+export POSTGRES_HOST=database
 
 # Ensure the app's dependencies are installed
 mix deps.get

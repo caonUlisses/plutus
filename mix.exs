@@ -54,7 +54,7 @@ defmodule Plutus.MixProject do
       {:cors_plug, "~> 1.1"},
       {:bcrypt_elixir, "~> 2.0"},
       {:comeonin, "~> 5.3"},
-      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.2", only: [:dev], runtime: false},
       {:guardian, "~> 2.0"},
       {:excoveralls, "~> 0.10", only: :test},
     ]
