@@ -15,8 +15,6 @@ services:
       - "5432:5432"
     networks:
       - web
-    env_file:
-      - .env
 
   elixir:
     build: ./docker/
