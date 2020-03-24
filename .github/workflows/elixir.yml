@@ -18,9 +18,14 @@ jobs:
       with:
         elixir-version: 1.10.2
         otp-version: 22.2 
+    - name: Credo
+      run: mix credo --strict lib/
     - name: Install Dependencies
       run: mix deps.get
     - name: Run Tests
-      run: POSTGRES_HOST=${{secrets.POSTGRES_HOST}} && POSTGRES_DATABASE=${{secrets.POSTGRES_DATABASE}} && POSTGRES_USER=${{secrets.POSTGRES_USER}} && POSTGRES_PASSWORD=${{secrets.POSTGRES_PASSWORD}} && mix test
-    - name: Credo
-      run: mix credo --strict lib/
+      env:
+        POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+        POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      run: mix test
