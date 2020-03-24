@@ -29,32 +29,6 @@ services:
       - web
     command:
       - ./start.sh
-
-  portainer:
-    image: portainer/portainer
-    command: -H unix:///var/run/docker.sock
-    restart: always
-    ports:
-      - 9000:9000
-      - 8000:8000
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-
-  netdata:
-    image: netdata/netdata
-    hostname: example.com # set to fqdn of host
-    ports:
-      - 20000:19999
-    cap_add:
-      - SYS_PTRACE
-    security_opt:
-      - apparmor:unconfined
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-
   metabase:
     container_name: metabase
     image: metabase/metabase
@@ -77,4 +51,3 @@ networks:
 
 volumes:
   postgres:
-  portainer_data:
