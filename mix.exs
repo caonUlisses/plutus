@@ -46,7 +46,7 @@ defmodule Plutus.MixProject do
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.1"},
+      {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
@@ -57,6 +57,9 @@ defmodule Plutus.MixProject do
       {:credo, "~> 1.2", only: [:dev], runtime: false},
       {:guardian, "~> 2.0"},
       {:excoveralls, "~> 0.10", only: :test},
+      {:commanded, "~> 1.0.0"},
+      {:commanded_eventstore_adapter, "~> 1.0.0"},
+      {:commanded_ecto_projections, "~> 1.0"},
     ]
   end
 
