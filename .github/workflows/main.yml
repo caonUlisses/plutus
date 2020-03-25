@@ -23,7 +23,7 @@ jobs:
       run: docker exec plutus_elixir_1 mix test
       
     - name: Remove deps folder
-      run: rm -Rf deps _build cover assets
+      run: sudo rm -Rf deps _build cover assets
       
     - name: Generate deployment package
       run: zip -r deploy.zip .
