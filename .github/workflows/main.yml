@@ -21,7 +21,10 @@ jobs:
       
     - name: Install dependencies
       run: docker exec plutus_elixir_1 mix deps.get
-      
+
+    - name: Compile
+      run: docker exec plutus_elixir_1 mix compile
+
     - name: Run tests
       run: docker exec plutus_elixir_1 mix test
       
@@ -41,6 +44,7 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: Plutus
         environment_name: Plutus-env
-        version_label: 2
+        version_label: 3
+        use_existing_version_if_available: true
         region: us-east-2
         deployment_package: deploy.zip
