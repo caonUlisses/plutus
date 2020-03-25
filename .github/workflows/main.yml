@@ -27,10 +27,13 @@ jobs:
       
     - name: Remove deps folder
       run: sudo rm -Rf deps _build cover assets
-      
+
+    - name: Generate env
+      run: cp .env.example .env
+
     - name: Generate deployment package
       run: zip -r deploy.zip .
-      
+
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v9
       with:
