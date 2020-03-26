@@ -22,8 +22,5 @@ jobs:
     - name: Install dependencies
       run: docker exec plutus_elixir_1 mix deps.get
 
-    - name: Compile
-      run: docker exec plutus_elixir_1 mix compile
-
     - name: Run tests
       run: docker exec plutus_elixir_1 mix test
