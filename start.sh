@@ -12,7 +12,7 @@ export POSTGRES_HOST=database
 mix deps.get
 
 # Wait for Postgres to become available.
-until psql "postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@database/$POSTGRES_DATABASE" '\q' 2>/dev/null; do
+until psql "postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@database" '\q' 2>/dev/null; do
   >&2 echo "Postgres is unavailable - retrying in 1 second"
   sleep 1
 done
