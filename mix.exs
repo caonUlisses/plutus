@@ -59,11 +59,12 @@ defmodule Plutus.MixProject do
       {:commanded, "~> 1.0.0"},
       {:commanded_eventstore_adapter, "~> 1.0.0"},
       {:commanded_ecto_projections, "~> 1.0"},
+      {:money, "~> 1.7"},
     ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
-  # For example, to create, migrate and run the seeds file at once:
+  # For example, to create, migrate and run the seeds file at once
   #
   #     $ mix ecto.setup
   #

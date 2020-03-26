@@ -43,3 +43,8 @@ config :plutus,
        Plutus.Guardian,
        issuer: "plutus",
        secret_key: "Sqo9zNbKNv0aRLV9yzogveQTRc87IgDukW0XYDGErs8tSDWn+J3aInjnZ65DbOBk"
+
+config :money,
+       default_currency: :BRL,
+       separator: ".",
+       delimiter: ","
